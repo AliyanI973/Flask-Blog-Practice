@@ -1,0 +1,361 @@
+{% extends 'master.html' %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+    .container{
+        background-color: rgb(255, 255, 255);
+        margin-top: 2vi;
+        /* padding: 10px 5px; */
+        border-radius: 20px;
+    }
+    #profile-info{
+        padding: 4px 80px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+    }
+    
+    #profile-pic{
+        border-radius: 50%;
+        margin-top: 20px;
+    }
+    .blog-content{
+        margin-top: 20px;
+
+    }
+    #blog-thumbnail{
+        height: 70vh;
+        min-height: 200px;
+        /* max-height: 500x; */
+        margin-top: 2.3em;
+        margin-bottom: 2.3em;
+    }
+    .article{
+        padding: 20px 5em;
+    }
+    .article h2{
+        font-family: "Manrope", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 800;
+        font-style: normal;
+    }
+
+    .article p {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 22px;
+    }
+</style>
+
+<section class="container justify-content-center">
+    <div class="row">
+        <div id="profile-info" class="d-flex">
+            <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="profile-pic" width="100" height="100" class="col-sm-1 mb-4" id="profile-pic">
+                <div class="d-flex row flex-column p-3 mt-3">
+                    <span >{{ blog.user_data.username }}</span>
+                    <p >{{ blog.created_at }}</p>
+                </div>
+        </div>
+        <hr width="50">
+        <article class="article d-flex justify-content-center flex-column">
+
+            <h2 class="mt-3">{{ blog.title }}</h2>
+            <img  src="{{url_for('static', filename='images/{}'.format(blog.blog_thumbnail))}}" alt="" id='blog-thumbnail'>
+
+            <p class="blog-content">{{ blog.content }}</p>
+        </article>
+
+    </div>
+    
+    <section id="description">
+        
+    </section>
+
+
+</section>
+
+
+<style>
+    .ag-format-container {
+  width: 1142px;
+  margin: 0 auto;
+}
+
+
+/* body {
+  background-color: #000;
+} */
+.ag-courses_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+
+  padding: 50px 0;
+}
+.ag-courses_item {
+  -ms-flex-preferred-size: calc(33.33333% - 30px);
+  flex-basis: calc(33.33333% - 30px);
+
+  margin: 0 15px 30px;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+}
+.ag-courses-item_link {
+  display: block;
+  padding: 30px 20px;
+  /* background-color: #121212; */
+  background-color: #ffffff;
+
+  overflow: hidden;
+
+  position: relative;
+}
+/* .ag-courses-item_link:hover, */
+.ag-courses-item_link .ag-courses-item_date {
+  text-decoration: none;
+  color: #121212;
+}
+.ag-courses-item_link:hover .ag-courses-item_bg {
+  -webkit-transform: scale(10);
+  -ms-transform: scale(10);
+  transform: scale(10);
+}
+.ag-courses-item_title {
+  min-height: 87px;
+  margin: 0 0 25px;
+
+  overflow: hidden;
+
+  font-weight: 700;
+  font-size: 24px;
+  color: #121212;
+
+  z-index: 2;
+  position: relative;
+}
+.ag-courses-item_date-box {
+  font-size: 18px;
+  /* color: #FFF; */
+  color : #121212;
+
+  z-index: 2;
+  position: relative;
+}
+.ag-courses-item_date {
+  font-weight: bold;
+  /* color: #f9b234; */
+  color: #121212;
+
+  -webkit-transition: color .5s ease;
+  -o-transition: color .5s ease;
+  transition: color .5s ease
+}
+/* .ag-courses-item_bg {
+  height: 128px;
+  width: 128px;
+  background-color: #f9b234;
+
+  z-index: 1;
+  position: absolute;
+  top: -75px;
+  right: -75px;
+
+  border-radius: 50%;
+
+  -webkit-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+} */
+/* .ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+  background-color: #3ecd5e;
+}
+.ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+  background-color: #e44002;
+}
+.ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+  background-color: #952aff;
+}
+.ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+  background-color: #cd3e94;
+}
+.ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+  background-color: #4c49ea;
+} */
+
+
+
+@media only screen and (max-width: 979px) {
+  .ag-courses_item {
+    -ms-flex-preferred-size: calc(50% - 30px);
+    flex-basis: calc(50% - 30px);
+  }
+  .ag-courses-item_title {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .ag-format-container {
+    width: 96%;
+  }
+
+}
+@media only screen and (max-width: 639px) {
+  .ag-courses_item {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
+  .ag-courses-item_title {
+    min-height: 72px;
+    line-height: 1;
+
+    font-size: 24px;
+  }
+  .ag-courses-item_link {
+    padding: 22px 40px;
+  }
+  .ag-courses-item_date-box {
+    font-size: 16px;
+  }
+}
+</style>
+
+<div class="ag-format-container">
+    <div class="ag-courses_box">
+      <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link">
+          <!-- <div class="ag-courses-item_bg"></div> -->
+  
+          <div class="ag-courses-item_title">
+            UI/Web&amp;Graph design for teenagers 11-17&#160;years old
+          </div>
+  
+          <div class="ag-courses-item_date-box">
+            Start:
+            <span class="ag-courses-item_date">
+              04.11.2022
+            </span>
+          </div>
+        </a>
+      </div>
+  
+      <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link">
+          <!-- <div class="ag-courses-item_bg"></div> -->
+  
+          <div class="ag-courses-item_title">
+            UX/UI Web-Design&#160;+ Mobile Design
+          </div>
+  
+          <div class="ag-courses-item_date-box">
+            Start:
+            <span class="ag-courses-item_date">
+              04.11.2022
+            </span>
+          </div>
+        </a>
+      </div>
+  
+      <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link">
+          <!-- <div class="ag-courses-item_bg"></div> -->
+  
+          <div class="ag-courses-item_title">
+            Annual package "Product+UX/UI+Graph designer&#160;2022"
+          </div>
+  
+          <div class="ag-courses-item_date-box">
+            Start:
+            <span class="ag-courses-item_date">
+              04.11.2022
+            </span>
+          </div>
+        </a>
+      </div>
+  
+      <!-- <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link">
+          <div class="ag-courses-item_bg"></div>
+  
+          <div class="ag-courses-item_title">
+            Graphic Design
+          </div>
+  
+          <div class="ag-courses-item_date-box">
+            Start:
+            <span class="ag-courses-item_date">
+              04.11.2022
+            </span>
+          </div>
+        </a>
+      </div> -->
+  
+      <!-- <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link">
+          <div class="ag-courses-item_bg"></div>
+  
+          <div class="ag-courses-item_title">
+            Motion Design
+          </div>
+  
+          <div class="ag-courses-item_date-box">
+            Start:
+            <span class="ag-courses-item_date">
+              30.11.2022
+            </span>
+          </div>
+        </a>
+      </div>
+  
+      <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link">
+          <div class="ag-courses-item_bg"></div>
+  
+          <div class="ag-courses-item_title">
+            Front-end development&#160;+ jQuery&#160;+ CMS
+          </div>
+        </a>
+      </div>
+  
+      <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link">
+          <div class="ag-courses-item_bg">
+          </div>
+          <div class="ag-courses-item_title">
+            Digital Marketing
+          </div>
+        </a>
+      </div>
+  
+      <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link">
+          <div class="ag-courses-item_bg"></div>
+  
+          <div class="ag-courses-item_title">
+            Interior Design
+          </div>
+  
+          <div class="ag-courses-item_date-box">
+            Start:
+            <span class="ag-courses-item_date">
+              31.10.2022
+            </span>
+          </div>
+        </a>
+      </div> -->
+  
+    </div>
+  </div>
+
+
+{% endblock content %}

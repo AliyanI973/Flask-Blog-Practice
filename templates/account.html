@@ -1,0 +1,305 @@
+{% extends 'master.html' %}
+
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
+
+/* button{
+	background-color: #176655;
+	color: white;
+	height: 30px;
+	border-radius: 4px;
+	outline: none;
+	border: 0px solid white;
+	width: 61%;
+	margin: 0px 2%;
+	letter-spacing: 5px;
+	padding: 5px 0px;
+	text-transform: uppercase;
+	box-shadow: 1px 1px 2px 2px rgba(17,66,55,0.4),
+             -1px -1px 2px 2px rgba(17,66,55,0.4);
+}
+button:hover{
+	background-color: white;
+	color: #176655;
+	box-shadow: 1px 1px 2px 2px rgba(17,66,55,0.4),
+             -1px -1px 2px 2px rgba(17,66,55,0.4);
+}
+
+input[type="text"],input[type="email"]{
+	background-color: transparent;
+	box-shadow: 1px 1px 2px 2px rgba(17,66,55,0.4),
+             -1px -1px 2px 2px rgba(17,66,55,0.4);
+
+	width: 100%;
+	line-height: 2.0;
+	border: 0px solid white;
+	color: #176655;
+	font-size: 15px;
+}
+ */
+
+
+
+/* #admin_information *{
+	margin:2%;
+}
+*/
+/* table{
+	border: none;
+	background-color: #176655;
+	width: 100%;
+	padding: 10px 40px;
+	font-family: 'Lato';
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	border-bottom: 0.5px solid gray;
+
+} */
+/* tr{
+	padding: 0 auto;
+	margin: 0 auto;
+    
+}
+td{
+	color: white;
+	background-color: #176655;
+	padding: 5px 5px;
+	text-align: center;
+	border-radius: 4px;
+}  */
+
+body{
+    background:#eee;
+    overflow: scroll;
+    align-items: center;
+}
+
+.card{
+    border:none;
+    position:relative;
+    overflow:hidden;
+    border-radius:8px;
+    cursor:pointer; 
+}
+
+.card:before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:4px;
+    height:100%;
+    background-color:#E1BEE7;
+    transform:scaleY(1);
+    transition:all 0.5s;
+    transform-origin: bottom
+}
+
+.card:after{
+    
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:4px;
+    height:100%;
+    background-color:#8E24AA;
+    transform:scaleY(0);
+    transition:all 0.5s;
+    transform-origin: bottom
+}
+
+.card:hover::after{
+    transform:scaleY(1);
+}
+
+.fonts{
+    font-size:11px;
+}
+
+.social-list{
+    display:flex;
+    list-style:none;
+    justify-content:center;
+    padding:0;
+}
+
+.social-list li{
+    padding:10px;
+    color:#8E24AA;
+    font-size:19px;
+}
+
+
+.buttons button:nth-child(1){
+       border:1px solid #8E24AA !important;
+       color:#8E24AA;
+       height:40px;
+}
+
+.buttons button:nth-child(1):hover{
+       border:1px solid #8E24AA !important;
+       color:#fff;
+       height:40px;
+       background-color:#8E24AA;
+}
+
+.buttons button:nth-child(2){
+       border:1px solid #8E24AA !important;
+       background-color:#8E24AA;
+       color:#fff;
+        height:40px;
+}
+.profile-update{
+    width: 950px;
+}
+
+.select {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  border-radius: 10px;
+  margin-top: 0.3rem;
+  background: white;
+  margin-top: 5vh;
+  padding: 20px;
+}
+
+.select:hover{
+    background-color: #8E24AA;
+    color: #fff;
+}
+.caret{
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #fff; 
+    transition: 0.3s;
+    margin-top: 10px;
+}
+.caret-rotate{
+    transform: rotate(180deg);
+}
+
+
+
+.update-form{
+    padding: 0.6em 0.8em;
+    background-color: #fff;
+    margin-top: 2vh;
+    border-radius: 10px;
+    display: none;
+}
+#myblogs{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 20px;
+    
+}
+
+</style>
+
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-7">
+            <div class="card p-3 py-4">
+                <div class="text-center">
+                    <img src="{{url_for('static', filename='images/{}'.format(data.profile_pic))}}" width="100" height="100" class="rounded-circle">
+                </div>
+                
+                <div class="text-center mt-3">
+                    <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
+                    <h5 class="mt-2 mb-0">{{ data.username }}</h5>
+                    
+                    <span>UI/UX Designer</span>
+                    
+                    <div class="px-4 mt-1">
+                        <p class="fonts">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                    
+                    </div>
+                    
+                    <ul class="social-list">
+                        <li><i class="fa fa-facebook"></i></li>
+                        <li><i class="fa fa-dribbble"></i></li>
+                        <li><i class="fa fa-instagram"></i></li>
+                        <li><i class="fa fa-linkedin"></i></li>
+                        <li><i class="fa fa-google"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<div class="container profile-update">
+    <div class="select">
+        <span >Update Profile</span>
+        <div class="caret"></div>
+    </div>
+
+    <div class="update-form">
+        <form action="" method="post" enctype="multipart/form-data" > 
+            <!-- <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/> -->
+
+            {{ form.csrf_token }}
+
+            {{ form.username.label(class='form-label mt-2') }}
+            {{ form.username(class='form-control')}}
+
+            {{ form.bio.label(class='form-label mt-2') }}
+            {{ form.bio(class='form-control')}}
+
+            {{ form.profile_pic.label(class='form-label mt-2') }}
+            {{ form.profile_pic(class='form-control')}}
+
+            <button class="btn btn-primary mt-2" type="submit">Submit</button>
+        </form>
+    </div>
+
+</div>
+
+
+
+{% if myblogs %}
+<section class="container mt-5 col-sm-6" id="myblogs">
+    <h4>My Blogs</h4>
+    <table>
+        <tr>
+            <th>Blog</th>
+            <th class="ml-5">Delete</th>
+        </tr>
+        {% for blogs in myblogs %}
+            <tr>
+                <td>{{ blogs.title }}</th>
+                <td><a href="{{ url_for('route.delete_blog', id=blogs.id) }}" class="btn btn-danger">Delete</a></th>
+            </tr>
+        {% endfor %}
+        
+    </table>
+
+    <!-- {{ myblogs }} -->
+</section>
+{% endif %}
+
+
+<script>
+    let dropMenu = document.querySelector('.drop-menu')
+    let select = document.querySelector('.select')
+    let form = document.querySelector('.update-form')
+    let caret = document.querySelector('.caret')
+
+    select.addEventListener('click', ()=>{
+        form.style.display = ((form.style.display!='none') ? 'none' : 'block');
+        caret.classList.toggle('caret-rotate')
+    })
+    
+</script>
+
+{% endblock %}

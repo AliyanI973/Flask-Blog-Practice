@@ -1,0 +1,69 @@
+{% extends 'master.html' %}
+
+{% block content %}
+
+    <section id="trending-blog" class="d-flex m-5">
+        <div class="row">
+            <div class="col-4" id="categories">
+                <h3>Categories</h3>
+                <ul>
+                    <li class="cate"><a href="{{ url_for('route.filter_by_category', category='All' )}}">All</a></li>
+                    <li class="cate"><a href="{{ url_for('route.filter_by_category' , category='Backend' )}}">Backend</a></li>
+                    <li class="cate"><a href="{{ url_for('route.filter_by_category' , category='Frontend' )}}">Frontend</a></li>
+                    <li class="cate"><a href="{{ url_for('route.filter_by_category' , category='Blockchain' )}}">Blockchain</a></li>
+                    <li class="cate"><a href="{{ url_for('route.filter_by_category', category='Cybersecurity' )}}">Cybersecurity</a></li>
+                </ul>
+            </div>
+            <section class="articles col-8">
+                {% for blog in blogs %}
+                {% if blog %}
+                <article>
+
+                    <div class="article-wrapper">
+                        <figure>
+                            <img src="{{url_for('static', filename='images/{}'.format(blog.blog_thumbnail))}}" alt="">
+                        </figure>
+                    </div>
+                    <div class="article-body">
+                        <a href="{{ url_for('route.blog_page', id=blog.id ) }}">
+                            <h5>{{ blog['title'] }}</h5>
+                            </a>
+                        <p class="card-text">{{ blog.user_data.username }}</p>
+                        <a href="{{ url_for('route.blog_page', id=blog.id ) }}" class="read-more">
+                            Read more <span class="sr-only">about this is some title</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+                    
+                {% else %}
+                    <p>No Blogs</p>
+                {% endif %}
+            {% endfor %}
+            </section>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+
+        let cateList = document.querySelectorAll('.cate');
+
+        cateList.forEach(function(elem){
+            elem.addEventListener('click', function() {
+                $.ajax({
+                    url : "url_for('route.filter_by_category')",
+                    method : "GET",
+                    accepts: {
+                        mycustomtype: 'application/x-some-custom-type'
+                    },
+                    data: $(this.Text)
+                });
+            });
+        });
+
+    </script>
+
+{% endblock %}
